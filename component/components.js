@@ -1,10 +1,5 @@
-/**
- * Container: it should be in header, and it should be first run in all of javascript
- * @param  {Object} ){var objs_Container [description]
- * @return {[type]}        [description]
- */
-var Container=(function(){var objs_Container={};function get(name){return objs_Container[name]}function set(name,obj,forcibly){var forcibly=forcibly===true?true:false;if(forcibly||get(name)===undefined){objs_Container[name]=obj}else{throw name+" already exists! you can't cover "+name+" name: "+get(name)}}return function(name,obj,forcibly){if(obj===undefined){return get(name)}else{set(name,obj,forcibly)}}})();
-
+Container('$', $);
+Container('Hammer', Hammer);
 Container("_$", function(selector, elem) {
     return elem ? elem.querySelector(selector) : document.querySelector(selector) 
 });
@@ -144,6 +139,7 @@ Container('window_event_ctrl', (function(){
             remove: off
         }
 
+
         function on(handler){
             var id = creatId();
 
@@ -155,7 +151,6 @@ Container('window_event_ctrl', (function(){
             }
             handlerObjSet[id] = handlerObj;
             handlerIdArr.push(id);
-
             return id;
         }
         function off(id){
@@ -248,9 +243,7 @@ Container('WaitResources', function (completehandler, loadhandler){
     return { push: pushArr, complete: complete, setLoadhandler: setLoadhandler }
 
     function setLoadhandler(_loadhandler){
-        console.log(loadhandler)
         loadhandler = _loadhandler;
-        console.log(loadhandler)
     }
     function pushArr(resources){
         if ( typeof resources.length === 'number' && resources.length > 0 ) {
@@ -467,12 +460,41 @@ Container('Swiper', function(elem, opt){
             return preventDefault(e);
         })
 
+        Event.bind(Cache.container, 'mouseenter', function(e){
+            stopAutoPlay();
+            return preventDefault(e);
+        })
+        Event.bind(Cache.container, 'mouseleave', function(e){
+            startAutoPlay();
+            return preventDefault(e);
+        })
+
         Container('window_event_ctrl').register('resize').push(function(){
             CacheAPI.loop_updateOffsetLeftList()
             updateLoad_interface()
         })
         setPagination();
         updateWrapper_after();
+        autoplay_handler(opt.autoplay)
+    }
+
+    function autoplay_handler(autoplay){
+        if (typeof autoplay !== 'number' || autoplay <= 0) {
+            return 'not has autoplay'
+        }
+        startAutoPlay(autoplay)
+    }
+    function startAutoPlay(autoplay){
+        autoplay = autoplay || opt.autoplay;
+        if (typeof autoplay !== 'number' || autoplay <= 0) {
+            return 'not has autoplay'
+        }
+        Cache.autoplayTimer = setInterval(function(){
+            go_next();
+        }, autoplay)
+    }
+    function stopAutoPlay(){
+        clearInterval(Cache.autoplayTimer);
     }
 
     function loop_setOffsetLeftList(){
@@ -612,7 +634,6 @@ Container('Swiper', function(elem, opt){
     }
 
     function setBtnClick(){
-        console.log(opt.nextButton)
         if (opt.nextButton) {
             Event.bind(Cache.nextButton, 'click', function(e){
                 go_next();
