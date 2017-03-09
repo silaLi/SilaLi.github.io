@@ -1,5 +1,11 @@
-Container('$', $);
-Container('Hammer', Hammer);
+
+(function(){
+    if ( !window.Container ) {
+        window.Container=(function(){var objs_Container={};function get(name){return objs_Container[name]}function set(name,obj,forcibly){var forcibly=forcibly===true?true:false;if(forcibly||get(name)===undefined){objs_Container[name]=obj}else{throw name+" already exists! you can't cover "+name+" name: "+get(name)}}return function(name,obj,forcibly){if(obj===undefined){return get(name)}else{set(name,obj,forcibly)}}})();
+    }
+}());
+Container('$', $)
+Container('Hammer', Hammer)
 Container("_$", function(selector, elem) {
     return elem ? elem.querySelector(selector) : document.querySelector(selector) 
 });
@@ -327,6 +333,7 @@ Container('Swiper', function(elem, opt){
     Cache.duration = 300;
     Cache.transition_timer = null;
     arguBind(opt);
+    wholeWidth(opt.wholeWidth);
 
     initializate_interface(opt, opt.loop === true ? loop_initializate : initializate);
     
@@ -356,6 +363,20 @@ Container('Swiper', function(elem, opt){
         }
     }
     return CacheAPI;
+    function wholeWidth(wholeWidth){
+        /** wholeWidth can not use with auto_width */
+        if (wholeWidth === true && opt.auto_width !== true) {
+            /** only word when wrapperSlideWidth < wrapperWidth */
+            var wrapperSlideWidth = getWrapperSlideWidth();
+            if (wrapperSlideWidth > Cache.wrapperWidth) {
+                return;
+            }
+            var slideWidth = Math.ceil(Cache.wrapperWidth / Cache.slidesLength);
+            for (var i = Cache.slides.length - 1; i >= 0; i--) {
+                Cache.slides[i].style.width = slideWidth + 'px';
+            }
+        }
+    }
     function arguBind(opt){
         var auto_width = opt.auto_width || false;
         if (auto_width === true) {

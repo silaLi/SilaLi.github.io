@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	
+	<!-- 360 使用Google Chrome Frame -->
+	<meta name="renderer" content="webkit">
+	<title>title</title>
+	
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	
+	<!-- 优先使用 IE 最新版本和 Chrome -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<!-- SEO页面关键词 -->
+	<meta name="keywords" content="your keywords">
+	
+	<!-- SEO页面描述 -->
+	<meta name="description" content="your description">
+	
+	<!-- favicon，可更改图片类型 -->
+	<link rel="shortcut icon" href="/favicon.ico" type="image/ico">
+	
+	<link rel="stylesheet" href="http://liliyangyang.top/_lib/normalize.css">
+	<style type="text/css">
+		.swiper-container{
+		    overflow: hidden;
+		    position: relative;
+		}
+		.swiper-wrapper{
+		    width: 100%;
+		    height: 100%;
+		    position: relative;
+		    white-space: nowrap;
+		    font-size: 0;
+		}
+		.swiper-wrapper.slides-lack{
+		    transform: translate(0) !important;
+		    text-align: center;
+		}
+		.slides-lack>.substitute_prev, .slides-lack>.substitute_next{
+		    display: none;
+		}
+		.swiper-slide{
+		    position: relative;
+		    display: inline-block;
+		    vertical-align: top;
+		    height: 100%;
+		}
+		.slide-prev{
+		    left: -100%;
+		}
+		.slide-prev-animate{
+		    animation: slide-prev-animation .5s forwards;
+		}
+		@keyframes slide-prev-animation{
+		      0%{ transform: translate3d(0, 0, 0); }
+		    100%{ transform: translate3d(100%, 0, 0); }
+		}
+		.slide-next{
+		    left: 100%;
+		}
+		.slide-next-animate{
+		    animation: slide-next-animation .5s forwards;
+		}
+		@keyframes slide-next-animation{
+		      0%{ transform: translate3d(0, 0, 0); }
+		    100%{ transform: translate3d(-100%, 0, 0); }
+		}
+		.swiper-pagination{
+		    position: absolute;
+		    text-align: center;
+		    z-index: 10;
+		    transform: translate3d(0,0,0);
+		}
+		.swiper-pagination-bullet{
+		    display: inline-block;
+		    border-radius: 100%;
+		}
+		.swiper-button-next, .swiper-button-prev{
+		    z-index: 10;
+		}
+		.swiper-button-disabled{
+		    visibility: hidden;
+		}
+		.swiper-container{
+			width: 50%;
+			margin: 50px auto;
+			outline: 1px solid grey;
+		}
+		.swiper-slide{
+			min-width: 100px;
+			border-left: 1px solid red;
+			border-right: 1px solid red;
+			height: 50px;
+		}
+	</style>
+	<script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+	<script src="http://cdn.bootcss.com/hammer.js/2.0.8/hammer.js"></script>
+</head>
+<body>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide"></div>
+			<div class="swiper-slide"></div>
+			<div class="swiper-slide"></div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../components.js"></script>
+<script type="text/javascript">
+	var Swiper = Container('Swiper');
+	Swiper('.swiper-container', {
+		loop: true,
+        wholeWidth: true
+	})
+</script>
+</html>
