@@ -214,6 +214,21 @@ Container('PreventDefault', function(e) {
     e.stopPropagation()
     return false
 });
+/** can make hostory not record the link, and instead of the hostory top link */
+Container('fnUrlReplace', function(){
+    if (!eleLink) {
+        return;
+    }
+    var href = eleLink.href;
+    if (href && /^#|javasc/.test(href) === false) {
+        if (history.replaceState) {
+            history.replaceState(null, document.title, href.split('#')[0] + '#');
+            location.replace('');
+        } else {
+             location.replace(href);
+        }
+    }
+});
 Container('AutoprefixerCssStyle', (function(){
     var style_transition = '-webkit-transition: @{{value}};\
                                -moz-transition: @{{value}};\
