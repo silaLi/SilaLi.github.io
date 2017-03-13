@@ -1,0 +1,29 @@
+@mixin wrapper_spacing($width: 10px, $attribute: margin){
+    #{$attribute}-left: $width;
+    #{$attribute}-right: $width;
+}
+@mixin overflowellipsis(){
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+@mixin aDefault(){
+    a{
+        color: inherit;
+        text-decoration: none;
+    }
+}
+@mixin background($url, $bgsize: (100% 100%), $repeat: no-repeat, $bgcolor: transparent){
+    background: $bgcolor url($url) $repeat;
+    background-size: $bgsize;
+}
+@function R($rem) {
+    @return $rem / 640 * 3.2 * 1rem;
+}
+@function minxRgba($c1, $c2){
+    
+    @return rgb( red($c1) * opacity($c2) * ( 1 - opacity($c1) ) + red($c2) * opacity($c1),
+        green($c1) * opacity($c2) * ( 1 - opacity($c1) ) + green($c2) * opacity($c1),
+        blue($c1) * opacity($c2) * ( 1 - opacity($c1) ) + blue($c2) * opacity($c1) );
+}
