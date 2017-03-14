@@ -215,7 +215,7 @@ Container('PreventDefault', function(e) {
     return false
 });
 /** can make hostory not record the link, and instead of the hostory top link */
-Container('fnUrlReplace', function(){
+Container('UrlReplace', function(eleLink){
     if (!eleLink) {
         return;
     }
@@ -225,7 +225,7 @@ Container('fnUrlReplace', function(){
             history.replaceState(null, document.title, href.split('#')[0] + '#');
             location.replace('');
         } else {
-             location.replace(href);
+            location.replace(href);
         }
     }
 });
