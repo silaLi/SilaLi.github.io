@@ -55,6 +55,16 @@ Container('Attr', function(elem){
         elem.setAttribute(name, value);
     }
 });
+Container('FastRender', function(str){
+    var div = document.createElement('div');
+    div.innerHTML = str;
+
+    var childElements = [];
+    for (var i = 0, len = div.childNodes.length - 1; i <= 0; i++) {
+        childElements.push(div.childNodes[i]);
+    }
+    return childElements;
+});
 Container('Event', (function() {
     return {
         bind: bindEvent,
