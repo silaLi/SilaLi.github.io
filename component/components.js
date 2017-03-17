@@ -60,8 +60,10 @@ Container('FastRender', function(str){
     div.innerHTML = str;
 
     var childElements = [];
-    for (var i = 0, len = div.childNodes.length - 1; i <= 0; i++) {
-        childElements.push(div.childNodes[i]);
+    for (var i = 0, len = div.childNodes.length - 1; i <= len; i++) {
+        if (div.childNodes[i].nodeType == 1) {
+            childElements.push(div.childNodes[i]);
+        }
     }
     return childElements;
 });
