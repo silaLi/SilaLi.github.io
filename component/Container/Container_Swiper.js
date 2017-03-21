@@ -1,11 +1,12 @@
 Container('Swiper', function(elem, opt){
     opt = opt || {};
-    var $ = Container('$');
+    var $ = Container('$') || window.$;
+    var Hammer = Container('Hammer') || window.Hammer;
+    
     var _$ = Container('_$');
     var _$s = Container('_$s');
     var Attr = Container('Attr');
     var Event = Container('Event');
-    var Hammer = Container('Hammer');
     var creatId =Container('CreatId');
     var ClassList = Container('ClassList');
     var preventDefault = Container('PreventDefault');
