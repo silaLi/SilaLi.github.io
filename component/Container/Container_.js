@@ -9,7 +9,7 @@ var Container = (function() {
     function get(name) {
         var obj = objs_Container[name];
         if (obj === undefined) {
-            console.warn('there is no ' + name);
+            // console.warn(obj, 'there is no ' + name);
         }
         return obj;
     }
@@ -22,9 +22,14 @@ var Container = (function() {
             throw name + " already exists! you can't cover " + name + " name: " + get(name)
         }
     }
-    return function(name, obj, forcibly) {
+    function del(name){
+        delete objs_Container[name];
+    }
+    function returnResult(name, obj, forcibly) {
         if (obj === undefined) {
             return get(name)
         } else { set(name, obj, forcibly) }
     }
+    returnResult.del = del;
+    return returnResult
 })();
