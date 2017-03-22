@@ -20,83 +20,6 @@
 	
 	<!-- favicon，可更改图片类型 -->
 	<link rel="shortcut icon" href="/favicon.ico" type="image/ico">
-	
-	<link rel="stylesheet" href="http://liliyangyang.top/_lib/normalize.css">
-	<style type="text/css">
-		.swiper-container{
-		    overflow: hidden;
-		    position: relative;
-		}
-		.swiper-wrapper{
-		    width: 100%;
-		    height: 100%;
-		    position: relative;
-		    white-space: nowrap;
-		    font-size: 0;
-		}
-		.swiper-wrapper.slides-lack{
-		    transform: translate(0) !important;
-		    text-align: center;
-		}
-		.slides-lack>.substitute_prev, .slides-lack>.substitute_next{
-		    display: none;
-		}
-		.swiper-slide{
-		    position: relative;
-		    display: inline-block;
-		    vertical-align: top;
-		    height: 100%;
-		}
-		.slide-prev{
-		    left: -100%;
-		}
-		.slide-prev-animate{
-		    animation: slide-prev-animation .5s forwards;
-		}
-		@keyframes slide-prev-animation{
-		      0%{ transform: translate3d(0, 0, 0); }
-		    100%{ transform: translate3d(100%, 0, 0); }
-		}
-		.slide-next{
-		    left: 100%;
-		}
-		.slide-next-animate{
-		    animation: slide-next-animation .5s forwards;
-		}
-		@keyframes slide-next-animation{
-		      0%{ transform: translate3d(0, 0, 0); }
-		    100%{ transform: translate3d(-100%, 0, 0); }
-		}
-		.swiper-pagination{
-		    position: absolute;
-		    text-align: center;
-		    z-index: 10;
-		    transform: translate3d(0,0,0);
-		}
-		.swiper-pagination-bullet{
-		    display: inline-block;
-		    border-radius: 100%;
-		}
-		.swiper-button-next, .swiper-button-prev{
-		    z-index: 10;
-		}
-		.swiper-button-disabled{
-		    visibility: hidden;
-		}
-		.swiper-container{
-			width: 50%;
-			margin: 50px auto;
-			outline: 1px solid grey;
-		}
-		.swiper-slide{
-			min-width: 100px;
-			border-left: 1px solid red;
-			border-right: 1px solid red;
-			height: 50px;
-		}
-	</style>
-	<script src="http://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
-	<script src="http://cdn.bootcss.com/hammer.js/2.0.8/hammer.js"></script>
 </head>
 <body>
 	<div class="swiper-container">
@@ -107,12 +30,16 @@
 		</div>
 	</div>
 </body>
-<script type="text/javascript" src="../Container/Container_Swiper.js"></script>
+<script type="text/javascript" src="../Container/Container_.js"></script>
+<script type="text/javascript" src="../Container/Container_DomEvent.js"></script>
+<script type="text/javascript" src="../Container/Container_DomReady.js"></script>
 <script type="text/javascript">
-	var Swiper = Container('Swiper');
-	Swiper('.swiper-container', {
-		loop: true,
-        wholeWidth: true
+	Container('DomReady')(function() {
+		console.log(1111)
+	}, 1000)
+	Container('DomReady')(function() {
+		console.log(2222)
 	})
+	Container.del('DomReady');
 </script>
 </html>
