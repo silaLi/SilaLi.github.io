@@ -25,7 +25,7 @@ Container('ajaxPost', function(url, data, callBack, async){
     function readystatechange() {
         if (xmlhttp.readyState == 4) {
             if (xmlhttp.status == 200) {
-                requesttxt = xmlhttp.responseText;
+                requesttxt = window.decodeURIComponent(xmlhttp.responseText)
                 callBack(requesttxt)
             }
         }
@@ -38,8 +38,3 @@ Container('ajaxData', function(data){
     }
     return dataArr.join('&');
 });
-
-var ajaxPost = Container('ajaxPost');
-ajaxPost('http://m.nflchina.com/ajax/superbowl_vote', data, function(text){
-    console.log(JSON.parse(decodeURIComponent(text)))
-})

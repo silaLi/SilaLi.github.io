@@ -7,12 +7,18 @@ var Container = (function() {
     var objs_Container = {};
 
     function get(name) {
-        return objs_Container[name]
+        var obj = objs_Container[name];
+        if (obj === undefined) {
+            console.warn('there is no ' + name);
+        }
+        return obj;
     }
 
     function set(name, obj, forcibly) {
         var forcibly = forcibly === true ? true : false;
-        if (forcibly || get(name) === undefined) { objs_Container[name] = obj } else {
+        if (forcibly || get(name) === undefined) {
+            objs_Container[name] = obj
+        } else {
             throw name + " already exists! you can't cover " + name + " name: " + get(name)
         }
     }

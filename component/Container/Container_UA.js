@@ -1,5 +1,11 @@
 /**
- * 判断 ua
+ * [browserRedirect description] 判断ua
+ * @AuthorHTL liyang
+ * @mail      ly20479293@gmail.com
+ * @DateTime  2017-03-22T10:34:20+0800
+ * @param     {[type]}                 phoneCallBack 
+ * @param     {[type]}                 pcCallBack
+ * @return    {[type]}    
  */
 Container('userAgentCheck', function browserRedirect(phoneCallBack, pcCallBack) {
     var sUserAgent = navigator.userAgent.toLowerCase();
