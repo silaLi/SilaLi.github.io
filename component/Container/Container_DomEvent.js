@@ -18,8 +18,6 @@ Container('Event', (function() {
         }
 
         function bind(elem, eventType, next, useCapture) {
-            $(elem).on(eventType, next);
-            return 'jquery ready';
 
             if (elem.addEventListener) {
                 elem.addEventListener(eventType, next, useCapture);
@@ -46,8 +44,6 @@ Container('Event', (function() {
         }
 
         function unbind(elem, eventType, next, useCapture) {
-            $(elem).off(eventType, next);
-            return 'jquery ready';
 
             if (elem.removeEventListener) {
                 elem.removeEventListener(eventType, next, useCapture);
