@@ -1,19 +1,18 @@
 Container('Swiper', function(elem, opt){
     opt = opt || {};
-    var $ = Container('$') || window.$;
     var Hammer = Container('Hammer') || window.Hammer;
     
     var _$ = Container('_$');
     var _$s = Container('_$s');
     var Attr = Container('Attr');
     var Event = Container('Event');
-    var creatId =Container('CreatId');
+    var CreateId =Container('CreateId');
     var ClassList = Container('ClassList');
     var preventDefault = Container('PreventDefault');
     var autoprefixer = Container('AutoprefixerCssStyle');
     var waitResources = Container('WaitResources');
 
-    var Swiper_id = creatId();
+    var Swiper_id = CreateId();
     var static_ClassName = {
         swiper_button_disabled: 'swiper-button-disabled',
         auto_width_mode: 'auto_width'
@@ -136,8 +135,14 @@ Container('Swiper', function(elem, opt){
             Cache.wrapperSlideWidthNum = Cache.offsetLeftList[1] + Cache.offsetLeftList[sl - 1];    
         }
         Cache.wrapper.style.display = 'none';
-        $(Cache.wrapper).find('.substitute_prev').remove();
-        $(Cache.wrapper).find('.substitute_next').remove();
+        
+        var wrapper_slides_prev = _$s('.substitute_prev', Cache.wrapper);
+        var wrapper_slides_next = _$s('.substitute_next', Cache.wrapper);
+        for (var i = 0,len = wrapper_slides_prev.length; i < len; i++) {
+            Cache.wrapper.removeChild(wrapper_slides_prev[i]);
+            Cache.wrapper.removeChild(wrapper_slides_next[i]);
+        }
+        
         Cache.substitute_prev_slides = [];
         for (var i = 0, len = Cache.slides.length; i < len; i++) {
             /** insert elem before */
@@ -207,7 +212,7 @@ Container('Swiper', function(elem, opt){
             return preventDefault(e);
         })
 
-        Container('window_event_ctrl').register('resize').push(function(){
+        Container('WindowEventCtrl').register('resize').push(function(){
             CacheAPI.loop_updateOffsetLeftList()
             updateLoad_interface()
         })
@@ -236,10 +241,6 @@ Container('Swiper', function(elem, opt){
     }
 
     function loop_setOffsetLeftList(){
-        // Cache.offsetLeftList = [0];
-        // for (var i = 1, len =  Cache.substitute_prev_slides.length; i < len; i++) {
-        //     Cache.offsetLeftList.push(Cache.substitute_prev_slides[i].offsetLeft);
-        // }
 
         var offsetLeftList = [0];
         for (var i = 0, len =  Cache.slides.length; i < len; i++) {
@@ -263,12 +264,10 @@ Container('Swiper', function(elem, opt){
         Cache.wrapperWidth = Cache.wrapper.clientWidth;
 
         setOffsetLeftValue(null, true)
-
         updateWrapper_after()
         if (Cache.wrapperSlideWidthNum < Cache.wrapperWidth) {
             Cache.state = 'stop';
             ClassList.add(Cache.wrapper, 'slides-lack')
-            $(Cache.prevButton).addClass(static_ClassName.swiper_button_disabled)
             Cache.prevButton && setTimeout(function(){ ClassList.add(Cache.prevButton, static_ClassName.swiper_button_disabled) });
             Cache.nextButton && setTimeout(function(){ ClassList.add(Cache.nextButton, static_ClassName.swiper_button_disabled) });
         }else{
