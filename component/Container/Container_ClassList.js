@@ -47,7 +47,6 @@ Container('ClassList', (function(){
         return classList;
     }
     function setClassList(elem, classList){
-        console.log(elem.className, classList)
         elem.className = classList.join(' ');
     }
 }()));
