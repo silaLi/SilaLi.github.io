@@ -1,6 +1,6 @@
-Container('window_event_ctrl', (function(){
-    var $ = Container('$');
-    var creatId = Container('CreatId');
+Container('WindowEventCtrl', (function(){
+    var Event = Container('Event');
+    var creatId = Container('CreateId');
 
     var EventSet = {}
     return {
@@ -17,7 +17,7 @@ Container('window_event_ctrl', (function(){
     function eventCtrl(eventName){
         var handlerObjSet = {};
         var handlerIdArr = []
-        $(window).on(eventName, function(){
+        Event.bind(window, 'resize', function(){
             for (var i = 0, len = handlerIdArr.length; i < len; i++) {
                 typeof handlerObjSet[handlerIdArr[i]].handler === 'function' && handlerObjSet[handlerIdArr[i]].handler();
             }

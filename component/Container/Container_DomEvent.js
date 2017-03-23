@@ -9,7 +9,7 @@ Container('Event', (function() {
         if (!elem) {
             return 'has no element in bindEvent'
         }
-        if (typeof elem.length === 'number') {
+        if (elem != window && typeof elem.length === 'number') {
             for (var i = elem.length - 1; i >= 0; i--) {
                 bind(elem[i], eventType, next, useCapture);
             }
@@ -35,7 +35,7 @@ Container('Event', (function() {
         if (!elem) {
             return 'has no element in bindEvent'
         }
-        if (typeof elem.length === 'number') {
+        if (elem != window && typeof elem.length === 'number') {
             for (var i = elem.length - 1; i >= 0; i--) {
                 unbind(elem[i], eventType, next, useCapture);
             }
