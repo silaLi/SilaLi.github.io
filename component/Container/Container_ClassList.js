@@ -5,21 +5,17 @@ Container('ClassList', (function(){
         contains: containsClass
     }
     function containsClass(elem, className){
+        if (!elem) { return 'there is no elem'; }
+
         var classList = getClassList(elem);
         if (contains(classList, className) < 0) {
             return false
         }
         return true;
     }
-    function contains(classList, className){
-        for (var i = 0, len = classList.length; i < len; i++) {
-            if (classList[i] == className) {
-                return i;                
-            }
-        }
-        return -1;
-    }
     function addClass(elem, className){
+        if (!elem) { return 'there is no elem'; }
+
         var classList = getClassList(elem);
         if (contains(classList, className) < 0) {
             classList.push(className)
@@ -28,6 +24,8 @@ Container('ClassList', (function(){
         return elem;
     }
     function removeClass(elem, className){
+        if (!elem) { return 'there is no elem'; }
+        
         var classList = getClassList(elem);
         var index = contains(classList, className);
         if (index >= 0) {
@@ -35,6 +33,14 @@ Container('ClassList', (function(){
             setClassList(elem, classList);
         }
         return elem;
+    }
+    function contains(classList, className){
+        for (var i = 0, len = classList.length; i < len; i++) {
+            if (classList[i] == className) {
+                return i;                
+            }
+        }
+        return -1;
     }
 
     function getClassList(elem){
