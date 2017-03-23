@@ -31,15 +31,19 @@
 	</div>
 </body>
 <script type="text/javascript" src="../Container/Container_.js"></script>
+<script type="text/javascript" src="../Container/Container_DomSelector.js"></script>
 <script type="text/javascript" src="../Container/Container_DomEvent.js"></script>
 <script type="text/javascript" src="../Container/Container_DomReady.js"></script>
+<script type="text/javascript" src="../Container/Container_ClassList.js"></script>
 <script type="text/javascript">
-	Container('DomReady')(function() {
-		console.log(1111)
-	}, 1000)
-	Container('DomReady')(function() {
-		console.log(2222)
-	})
-	Container.del('DomReady');
+	var ClassList = Container('ClassList');
+	console.log(ClassList)
+	var _$ = Container('_$');
+	ClassList.add(_$('.swiper-container'), 'aaa')
+	ClassList.add(_$('.swiper-container'), 'bbb')
+	console.log(ClassList.contains(_$('.swiper-container'), 'aaa'))
+	setTimeout(function() {
+		ClassList.remove(_$('.swiper-container'), 'aaa')
+	}, 2000)
 </script>
 </html>
