@@ -196,10 +196,12 @@ Container('Swiper', function(elem, opt){
 
         Event.bind(Cache.container, 'swipeleft', function(e){
             go_next();
+            restartAutoPlay();
             return preventDefault(e);
         })
         Event.bind(Cache.container, 'swiperight', function(e){
             go_prev();
+            restartAutoPlay();
             return preventDefault(e);
         })
 
@@ -238,6 +240,10 @@ Container('Swiper', function(elem, opt){
     }
     function stopAutoPlay(){
         clearInterval(Cache.autoplayTimer);
+    }
+    function restartAutoPlay(){
+        stopAutoPlay();
+        startAutoPlay();
     }
 
     function loop_setOffsetLeftList(){
