@@ -196,12 +196,11 @@ Container('Swiper', function(elem, opt){
 
         Event.bind(Cache.container, 'swipeleft', function(e){
             go_next();
-            restartAutoPlay();
             return preventDefault(e);
         })
         Event.bind(Cache.container, 'swiperight', function(e){
             go_prev();
-            restartAutoPlay();
+            
             return preventDefault(e);
         })
 
@@ -234,12 +233,14 @@ Container('Swiper', function(elem, opt){
         if (typeof autoplay !== 'number' || autoplay <= 0) {
             return 'not has autoplay'
         }
+        stopAutoPlay();
         Cache.autoplayTimer = setInterval(function(){
             go_next();
         }, autoplay)
     }
     function stopAutoPlay(){
         clearInterval(Cache.autoplayTimer);
+        Cache.autoplayTimer = null;
     }
     function restartAutoPlay(){
         stopAutoPlay();
@@ -292,6 +293,7 @@ Container('Swiper', function(elem, opt){
     }
 
     function setOffsetLeftValue(offsetLeftValue, direct){
+        restartAutoPlay();
         offsetLeftValue = offsetLeftValue == undefined ? Cache.activeOffsetLeft : offsetLeftValue; 
         Cache.activeOffsetLeft = getOffsetLeftMax( offsetLeftValue );
         Cache.activeOffsetLeft = getOffsetLeftMin( Cache.activeOffsetLeft );
