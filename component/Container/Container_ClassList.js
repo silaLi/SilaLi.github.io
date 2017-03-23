@@ -29,8 +29,11 @@ Container('ClassList', (function(){
     }
     function removeClass(elem, className){
         var classList = getClassList(elem);
-        classList.splice(contains(classList, className), 1);
-        setClassList(elem, classList);
+        var index = contains(classList, className);
+        if (index >= 0) {
+            classList.splice(index, 1);
+            setClassList(elem, classList);
+        }
         return elem;
     }
 
@@ -44,6 +47,7 @@ Container('ClassList', (function(){
         return classList;
     }
     function setClassList(elem, classList){
+        console.log(elem.className, classList)
         elem.className = classList.join(' ');
     }
 }()));
