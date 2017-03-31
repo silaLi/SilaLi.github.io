@@ -1,6 +1,4 @@
-Container('WindowEventCtrl', (function(){
-    var Event = Container('Event');
-    var creatId = Container('CreateId');
+Container.set('WindowEventCtrl', function(CreateId, Event){
 
     var EventSet = {}
     return {
@@ -26,8 +24,6 @@ Container('WindowEventCtrl', (function(){
             push: on,
             remove: off
         }
-
-
         function on(handler){
             var id = creatId();
 
@@ -45,4 +41,4 @@ Container('WindowEventCtrl', (function(){
             var handlerObj = handlerObjSet[id];
         }
     }
-}()));
+});

@@ -29,3 +29,51 @@
         blue($c1) * opacity($c2) * opacity($c1) + blue($c2) * opacity($c1)
     );
 }
+.layout_spaces_list{
+    ul{
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        font-size: 0;
+        >li{
+            display: inline-block;
+            font-size: initial;
+            width: 100%;
+            position: relative;
+        }
+    }
+}
+@for $i from 1 through 10 { 
+    .layout_spaces_listX#{$i}{
+        @extend .layout_spaces_list;
+        ul > li{
+            width: 1 / $i * 100%;
+        }
+    } 
+}
+.layout_table{
+    display: table;
+    width: 100%;
+    .col{
+        vertical-align: top;
+        display: table-cell;
+        position: relative;
+        &.left{
+            float: left;
+        }
+        &.right{
+            float: right;
+        }
+    }
+    
+    @for $i from 1 through 10 {
+        @for $j from 1 through $i { 
+            .colX#{$i}_#{$j}{
+                @extend .col;
+                width: $j / $i *100%;
+                
+            }
+        }
+    }
+}
+

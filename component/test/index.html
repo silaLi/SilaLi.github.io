@@ -20,6 +20,18 @@
 	
 	<!-- favicon，可更改图片类型 -->
 	<link rel="shortcut icon" href="/favicon.ico" type="image/ico">
+	<link rel="stylesheet" href="../Container/Container_Swiper.css">
+	<style>
+		.swiper-slide{
+			width: 100%;
+			height: 20px;
+			background: #000;
+			outline: 1px solid red;
+		}
+		.swiper-container{
+			height: 400px;
+		}
+	</style>
 </head>
 <body>
 	<div class="swiper-container">
@@ -30,20 +42,27 @@
 		</div>
 	</div>
 </body>
+<script src="http://cdn.bootcss.com/hammer.js/2.0.8/hammer.min.js"></script>
 <script type="text/javascript" src="../Container/Container_.js"></script>
 <script type="text/javascript" src="../Container/Container_DomSelector.js"></script>
 <script type="text/javascript" src="../Container/Container_DomEvent.js"></script>
-<script type="text/javascript" src="../Container/Container_DomReady.js"></script>
+<script type="text/javascript" src="../Container/Container_DomAttr.js"></script>
+<script type="text/javascript" src="../Container/Container_CreateId.js"></script>
+<script type="text/javascript" src="../Container/Container_WaitResources.js"></script>
 <script type="text/javascript" src="../Container/Container_ClassList.js"></script>
+<script type="text/javascript" src="../Container/Container_EventPrevent.js"></script>
+<script type="text/javascript" src="../Container/Container_AutoprefixerCssStyle.js"></script>
+<script type="text/javascript" src="../Container/Container_WindowEventCtrl.js"></script>
+<script type="text/javascript" src="../Container/Container_Swiper.js"></script>
+<script type="text/javascript" src="./Container_NumberArrayRemoveDuplicates.js"></script>
 <script type="text/javascript">
-	var ClassList = Container('ClassList');
-	console.log(ClassList)
-	var _$ = Container('_$');
-	ClassList.add(_$('.swiper-container'), 'aaa')
-	ClassList.add(_$('.swiper-container'), 'bbb')
-	console.log(ClassList.contains(_$('.swiper-container'), 'aaa'))
-	setTimeout(function() {
-		ClassList.remove(_$('.swiper-container'), 'aaa')
-	}, 2000)
+	// var NumberArrayRemoveDuplicates = Container('NumberArrayRemoveDuplicates');
+	// NumberArrayRemoveDuplicates([2, 3, 4, 5, 6, 7, 8, 4, 9, 10])
+	// Container('NumberArrayRemoveDuplicates_test')();
+	var Swiper = Container('Swiper');
+	Swiper('.swiper-container', {
+		loop: true,
+		autoplay: 3000
+	})
 </script>
 </html>

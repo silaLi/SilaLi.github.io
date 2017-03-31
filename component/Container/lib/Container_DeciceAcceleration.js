@@ -6,15 +6,14 @@
  * @mail      ly20479293@gmail.com
  * @DateTime  2017-03-22T10:39:26+0800
  */
-Container('RegisterDeciceAcceleration', (function() {
+Container.set('RegisterDeciceAcceleration', function() {
     var nexts = [];
     var equipmentNotStable = true;
-
+    window.addEventListener("devicemotion", handleMotionEvent, false)
     return function(next) {
         setTimeout(function() {
             nexts.push(next);
         }, 100)
-        window.addEventListener("devicemotion", handleMotionEvent, false)
     }
     window.unregisterDecice = function() {
         window.removeEventListener("devicemotion", handleMotionEvent, false)
@@ -62,4 +61,4 @@ Container('RegisterDeciceAcceleration', (function() {
             equipmentNotStable = false;
         }
     }
-}()));
+});

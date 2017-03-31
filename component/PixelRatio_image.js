@@ -96,5 +96,3 @@
 		loadRatioImg(imgs[i])
 	}
 }())
-
-console.log()

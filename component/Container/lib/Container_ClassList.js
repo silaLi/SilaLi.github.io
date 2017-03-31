@@ -1,4 +1,19 @@
-Container('ClassList', (function(){
+/**
+ * [description]
+ * @Author   liyang
+ * @mail     ly20479293@gmail.com
+ * @DateTime 2017-03-31T12:00:48+0800
+ * @example
+ * add:
+ * ClassList.add(testElem, 'name1')
+ * 
+ * contains:
+ * ClassList.contains(testElem, 'name1')
+ *
+ * rmove:
+ * ClassList.remove(testElem, 'name1');
+ */
+;Container.set('ClassList', function(){
     return{
         add: addClass,
         remove: removeClass,
@@ -55,4 +70,4 @@ Container('ClassList', (function(){
     function setClassList(elem, classList){
         elem.className = classList.join(' ');
     }
-}()));
+});

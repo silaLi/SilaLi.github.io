@@ -1,7 +1,8 @@
-Container('WindowSize.GapChange', (function(){
+Container.set('WindowSize.GapChange', function(WindowEventCtrl){
     var handlerObjArr = []
     var current_window_width = window.innerWidth;
     setTimeout(initializate, 200);
+    initializate();
     return {
         register: registerHandler
     }
@@ -38,8 +39,8 @@ Container('WindowSize.GapChange', (function(){
     }
 
     function initializate(){
-        Container('window_event_ctrl').register('resize').push(function(){
+        WindowEventCtrl.register('resize').push(function(){
             resizeHandler()
-        });
+        });  
     }
-}()));
+});

@@ -8,7 +8,7 @@
  * @mail      ly20479293@gmail.com
  * @DateTime  2017-03-22T10:43:18+0800
  */
-Container('FitDevicePixelRatio', (function(){
+Container.set('FitDevicePixelRatio', function(Image){
 	var devicePixelRatio = window.devicePixelRatio;
 	if (!devicePixelRatio) {
 		return 'has no the attribute'
@@ -26,7 +26,6 @@ Container('FitDevicePixelRatio', (function(){
 	if (devicePixelRatio == 1) {
 		return 'there is no need to fit'
 	}
-	var Image = Container('Image');
 	function getAllRatioImg(){
 		return document.querySelectorAll('[data-pixelratio]');
 	}
@@ -90,4 +89,4 @@ Container('FitDevicePixelRatio', (function(){
 	for (var i = 0, len = imgs.length; i < len; i++) {
 		loadRatioImg(imgs[i])
 	}
-}()));
+});

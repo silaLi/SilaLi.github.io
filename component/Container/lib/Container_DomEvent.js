@@ -1,4 +1,4 @@
-Container('Event', (function() {
+Container.set('Event', function() {
     return {
         bind: bindEvent,
         unbind: unbindEvent
@@ -54,4 +54,4 @@ Container('Event', (function() {
             }
         }
     }
-}()));
+});

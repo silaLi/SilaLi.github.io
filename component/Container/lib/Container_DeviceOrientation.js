@@ -2,7 +2,7 @@
  * 手机水平仪监听
  * 实现手机游戏的摇摆操作
  */
-Container('RegisterDeciceBalancer', (function(){
+Container.set('RegisterDeciceBalancer', function(){
     var CreateId = Container('CreateId');
     var nextAry = [];
     var Cache = {
@@ -67,4 +67,4 @@ Container('RegisterDeciceBalancer', (function(){
         }
         nextAry.push(handlerObj.id);
     }
-}()));
+});
