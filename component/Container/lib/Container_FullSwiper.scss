@@ -1,0 +1,52 @@
+.fullswiper {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    .fullswiper_wrapper {
+        position: relative;
+        width: 100%;
+        padding-top: 438px / 780px * 100%;
+        .fullswiper_silde {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            img {
+                width: 100%;
+                height: 100%;
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                background-color: #2b599d;
+            }
+            &.prev {
+                right: 100%;
+            }
+            &.prev_animating {
+				animation: prev_animat .3s forwards;
+            }
+            @keyframes prev_animat {
+			  0%   { transform: translate(-100%); }
+			  100% { transform: translate(0); }
+			}
+            &.next{
+				left: 100%;
+            }
+            &.next_animating {
+            	animation: next_animat .3s forwards;
+            }
+            @keyframes next_animat {
+			  0%   { transform: translate(100%); }
+			  100% { transform: translate(0); }
+			}
+        }
+    }
+}
+.fullswiper_pagination{
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 10px;
+	text-align: center;
+}
