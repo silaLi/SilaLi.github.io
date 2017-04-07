@@ -71,7 +71,6 @@
             window[Cache.data[Cache.CallBackName]] = null;
         }
         function setSuccess(success){
-            console.log(success)
             Cache.success = success;
             return CacheAPI;
         }
@@ -137,8 +136,9 @@
                     if (Cache.dataType === 'JSON') {
                         Cache.res = eval('('+Cache.res+')');
                     }
-                    console.log(Cache.res)
                     AJAX_Success(Cache.res)
+                }else{
+                    AJAX_Error();
                 }
             }
         }
