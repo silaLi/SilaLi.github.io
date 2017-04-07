@@ -22,6 +22,7 @@
     CacheAPI.directSet = directSet;
     CacheAPI.del = del;
     CacheAPI.inject = inject;
+    CacheAPI.wait = inject;
     
     /**
      * @type {object} InjectionManager Used as Injection manager

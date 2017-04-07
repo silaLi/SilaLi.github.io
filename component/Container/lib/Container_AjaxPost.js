@@ -63,6 +63,9 @@
         }
     }
 });
+;Container.set('JSONP', function(FastRender){
+
+});
 /**
  * [description]
  * @Author   liyang
