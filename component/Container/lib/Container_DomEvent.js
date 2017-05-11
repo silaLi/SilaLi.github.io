@@ -1,7 +1,8 @@
-Container.set('Event', function() {
+Container.set('Event', function(PreventDefault) {
     return {
         bind: bindEvent,
-        unbind: unbindEvent
+        unbind: unbindEvent,
+        pd: PreventDefault
     }
 
     function bindEvent(elem, eventType, next, useCapture) {
@@ -9,7 +10,7 @@ Container.set('Event', function() {
         if (!elem) {
             return 'has no element in bindEvent'
         }
-        if (elem != window && typeof elem.length === 'number') {
+        if (elem != window && typeof elem.length === 'number' && !elem.nodeType) {
             for (var i = elem.length - 1; i >= 0; i--) {
                 bind(elem[i], eventType, next, useCapture);
             }
@@ -35,7 +36,7 @@ Container.set('Event', function() {
         if (!elem) {
             return 'has no element in bindEvent'
         }
-        if (elem != window && typeof elem.length === 'number') {
+        if (elem != window && typeof elem.length === 'number' && !elem.nodeType) {
             for (var i = elem.length - 1; i >= 0; i--) {
                 unbind(elem[i], eventType, next, useCapture);
             }
@@ -53,5 +54,12 @@ Container.set('Event', function() {
                 elem['on' + eventType] = null;
             }
         }
+    }
+});
+Container.set('PreventDefault', function() {
+    return function(e) {
+        e.preventDefault()
+        e.stopPropagation()
+        return false
     }
 });

@@ -7,7 +7,7 @@
 ;Container.set('_$$', function() {
     function each(list, handle){
         for (var i = 0; i < list.length; i++) {
-            var result = handle(list[i], i) || {break: false};
+            var result = handle.call(this, list[i], i) || {break: false};
             if (result.break === true) {
                 return result.returnValue;
             }
@@ -139,7 +139,7 @@
         self.size = function(){
             return self.getElemList().length;
         }
-        self.getElemList = function(){
+        self.getElemList = function(index){
             if (self.elemList == null) {
                 
                 self.elemParent = [].slice.call(self.elemParent);
@@ -154,7 +154,12 @@
                     // console.log('+++++++', self.elemList)
                 }
             }
-            return self.elemList;
+            if (index === undefined) {
+                return self.elemList;
+            }else{
+                return self.elemList[index];
+            }
+            
         }
         self.setElemList = function(elemList){
             self.elemList = elemList;
@@ -351,7 +356,13 @@
                     }
                 }
             })
-            
+        }
+        self.cssArray = function(cssStyleList){
+            var self = this;
+            cssStyleList = cssStyleList || [];
+            each(cssStyleList, function(cssStyle){
+                self.css(cssStyle);
+            })
         }
     }
     //########################################################

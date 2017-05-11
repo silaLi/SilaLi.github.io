@@ -12,6 +12,8 @@ Container.set('WaitResources', function(Event) {
                 for (var i = resources.length - 1; i >= 0; i--) {
                     push(resources[i])
                 }
+            }else{
+                push(resources)
             }
             return this;
         }

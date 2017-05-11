@@ -17,7 +17,7 @@ Container.set('Swiper', function(Hammer, _$, _$s, Attr, Event, CreateId, ClassLi
         var attr = Attr(container)
         var elem_id = attr.get('swiper-id');
         if ( elem_id ) {
-            return Container(elem_id).CacheAPI;
+            return Container(elem_id);
         }else{
             attr.set('swiper-id', Swiper_id);
         }
@@ -69,6 +69,7 @@ Container.set('Swiper', function(Hammer, _$, _$s, Attr, Event, CreateId, ClassLi
                 Cache.activeOffsetLeft = Cache.wrapperSlideWidthNum;
             }
         }
+        Container(Swiper_id, CacheAPI);
         return CacheAPI;
         function wholeWidth(wholeWidth){
             /** wholeWidth can not use with auto_width */

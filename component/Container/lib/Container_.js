@@ -5,7 +5,7 @@
 ;var Container = (function() {
     function CacheAPI() { return constructor(); }
 
-    Cache = {
+    var Cache = {
         Container: {}
     };
     /**
@@ -73,7 +73,9 @@
     function ContainerGet(serviceName){
         return Cache.Container[serviceName];
     }
-    
+    function ContainerContain(serviceName){
+        return Cache.Container.hasOwnProperty(serviceName);
+    }
     function del(serviceName){
         ContainerDel(serviceName)
     }
@@ -160,7 +162,7 @@
             var services = self.services;
             for (var i = 0, len = serviceNameList.length; i < len; i++) {
                 services[i] = ContainerGet(serviceNameList[i]);
-                if (services[i] === undefined) {
+                if (!ContainerContain(serviceNameList[i])) {
                     self.waitServices.push({
                         index: i,
                         serviceName: serviceNameList[i],

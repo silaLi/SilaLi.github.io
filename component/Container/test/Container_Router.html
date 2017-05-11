@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+    <title>jasmine test</title>
+    <link href="http://cdn.bootcss.com/jasmine/2.5.2/jasmine.css" rel="stylesheet">
+    <!-- <script src="http://cdn.bootcss.com/jasmine/2.5.2/jasmine.min.js"></script> -->
+    <!-- <script src="http://cdn.bootcss.com/jasmine/2.5.2/jasmine-html.min.js"></script> -->
+    <!-- <script src="http://cdn.bootcss.com/jasmine/2.5.2/boot.min.js"></script> -->
+</head>
+
+<body>
+    <h1>jasmine test</h1>
+    <a href="#name">name</a>
+    <a href="#home">home</a>
+</body>
+<script type="text/javascript" src="../lib/Container_.js"></script>
+<script type="text/javascript" src="../lib/Container_DomEvent.js"></script>
+<script type="text/javascript" src="../lib/Container_Router.js"></script>
+<script type="text/javascript" src="../lib/Container_CreateId.js"></script>
+<script type="text/javascript" src="../lib/Container_Signal.js"></script>
+<script type="text/javascript" src="../lib/Container_UrlReplace.js"></script>
+<!-- <script type="text/javascript" src="./Container_Router.test.js"></script> -->
+<script type="text/javascript">
+	// Container.inject(function(Router) {
+	// 	Router.register('/name', function(){
+	// 		console.log(Router.getHash());
+	// 		console.log('Router go')
+	// 	});
+	// });
+	// Container.inject(function(Router) {
+		// console.log(Router.getHash());
+		// Router.go('/name')
+		// setTimeout(function(){
+		// 	Router.go('/name/333')
+		// }, 6000)
+	// })
+	// Container.inject(function(Path){
+	// 	console.log(Path.resolve('/1/li/yang/are/god'))
+	// 	console.log(Path.resolve('./1/li/yang/are/god'))
+	// 	console.log(Path.resolve('../../is/god'))
+	// 	console.log(Path.resolve('./1/li/yang/are/god', '../../is/god', '../../../../../../../../../../..'))
+	// })
+	// Container.inject(function(Signal){
+	// 	Signal.publish('s_b')
+	// 	setTimeout(function(){
+	// 		Signal.register('s_b', function(){
+	// 			console.log('s_b register')
+	// 		})
+	// 	}, 3000)
+	// })
+	Container.inject(function(HashchangeHandlers){
+		HashchangeHandlers(function(){
+			console.log(1111);
+		})
+	})
+</script>
+</html>

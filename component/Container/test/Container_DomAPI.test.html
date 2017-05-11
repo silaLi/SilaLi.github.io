@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+    <title>jasmine test</title>
+    <link href="http://cdn.bootcss.com/jasmine/2.5.2/jasmine.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/jasmine/2.5.2/jasmine.min.js"></script>
+    <script src="http://cdn.bootcss.com/jasmine/2.5.2/jasmine-html.min.js"></script>
+    <script src="http://cdn.bootcss.com/jasmine/2.5.2/boot.min.js"></script>
+</head>
+
+<body>
+    <h1 class="aa">jasmine test</h1>
+    <h1 class="aa">jasmine test1</h1>
+</body>
+<script type="text/javascript" src="../lib/Container_.js"></script>
+<script type="text/javascript" src="../lib/Container_DomAPI.js"></script>
+<script type="text/javascript" src="./Container_DomAPI.test.js"></script>
+<script type="text/javascript">
+	Container.inject(function(_$$) {
+		// console.log(_$$('h1').containClass('aa'))
+		
+		// _$$('h1').removeClass('aa1')
+		// _$$('h1').containClassFilter('aa',
+		// 	function(e){
+		// 		console.log(1, e)
+		// 	}, function(e){
+		// 		console.log(2, e)
+		// 	}
+		// )
+
+		// console.log(_$$('h1').getAttr('class'))
+		// _$$('h1').getAttr('class', function(val){
+		// 	console.log(val)
+		// })
+
+		// _$$('h1').setAttr('data-index', 'aaaa')
+		// _$$('h1').removeAttr('class')
+		
+		a = _$$.render('<div></div><h1></h1>');
+		a.addClass('bbb')
+		console.log(a.getElemList())
+		a.append(document.body)
+	})
+</script>
+</html>
